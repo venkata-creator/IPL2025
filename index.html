@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL 2024 - Indian Premier League</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .match-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-3xl font-bold"> <img src="ipl logo.jpeg"  style="width: 50px;" height="70px"></div>
+                    <div>
+                        <h1 class="text-2xl font-bold">IPL 2025</h1>
+                        <p class="text-blue-100">Indian Premier League</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <button onclick="showTab('teams')" class="hover:text-blue-200 transition-colors">Teams</button>
+                    <button onclick="showTab('matches')" class="hover:text-blue-200 transition-colors">Matches</button>
+                    <button onclick="showTab('stats')" class="hover:text-blue-200 transition-colors">Stats</button>
+                    <button onclick="showTab('points')" class="hover:text-blue-200 transition-colors">Points Table</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Teams Section -->
+        <div id="teams-section" class="tab-content">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">IPL Teams 2025</h2>
+                <p class="text-gray-600">Meet the 10 franchises competing for the championship</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+                  <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('RCB')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"> <img src="rcb3.png" style="width: 40px; "></div>
+                    <h3 class="font-bold text-lg text-gray-800">Royal Challengers Bangalore</h3>
+                    <p class="text-red-600 font-medium">RCB</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Virat Kohli</p>
+                </div>
+                
+                
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('CSK')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="csk2.png"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Chennai Super Kings</h3>
+                    <p class="text-yellow-600 font-medium">CSK</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: MS Dhoni</p>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('MI')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="mi.jpg"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Mumbai Indians</h3>
+                    <p class="text-blue-600 font-medium">MI</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Rohit Sharma</p>
+                </div>
+                
+              
+                
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('KKR')">
+                    <div class="w-16 h-16 mx-auto mb-4  rounded-full flex items-center justify-center text-2xl"><img src="kkr.jpg"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Kolkata Knight Riders</h3>
+                    <p class="text-purple-600 font-medium">KKR</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Shreyas Iyer</p>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('DC')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="dc.png"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Delhi Capitals</h3>
+                    <p class="text-blue-800 font-medium">DC</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Rishabh Pant</p>
+                </div>
+                  <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('SRH')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="srh.jpeg"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Sunrisers Hyderabad</h3>
+                    <p class="text-red-600 font-medium">SRH</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: pat cummins</p>
+                </div>
+
+                 <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('Punjab Kings')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="punjab.png"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Punjab Kings</h3>
+                    <p class="text-red-600 font-medium">Punjab Kings</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: shreyas iyer</p>
+                </div>
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('Punjab Kings')">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"><img src="rr.png"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Rajasthan Royals</h3>
+                    <p class="text-red-600 font-medium">RR</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Sanju Samson</p>
+                </div>
+                   <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer" onclick="showTeamDetails('Punjab Kings')">
+                    <div class="w-16 h-16 mx-auto mb-4  rounded-full flex items-center justify-center text-2xl"><img src="gt.jpg"></div>
+                    <h3 class="font-bold text-lg text-gray-800">Gujarat Titans</h3>
+                    <p class="text-red-600 font-medium">GT</p>
+                    <p class="text-sm text-gray-500 mt-2">Captain: Shubman Gill</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Matches Section -->
+        <div id="matches-section" class="tab-content hidden">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Matches</h2>
+                <p class="text-gray-600">Don't miss the exciting cricket action</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 1</span>
+                        <span class="text-sm">Today, 7:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"> <img src="rcb2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">RCB</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="mi.jpg" style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">MI</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 M. Chinnaswamy Stadium</p>
+                    </div>
+                </div>
+                
+                <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 2</span>
+                        <span class="text-sm">Tomorrow, 3:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="csk2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">csk</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="kkr.jpg"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">KKR</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 Eden Gardens, Kolkata</p>
+                    </div>
+                </div>
+                
+                <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 3</span>
+                        <span class="text-sm">aug 17, 7:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"> <img src="dc.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">DC</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="csk2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">CSK</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 Chepauk</p>
+                    </div>
+                </div>
+                  <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 4</span>
+                        <span class="text-sm">aug 3, 7:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"> <img src="punjab.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">punjab</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="rcb2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">RCB</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 M. Chinnaswamy Stadium</p>
+                    </div>
+                </div>
+                   <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 5</span>
+                        <span class="text-sm">aug 4, 7:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"> <img src="gt.jpg"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">GT</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="rcb2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">RCB</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 M. Chinnaswamy Stadium</p>
+                    </div>
+                </div>
+                   <div class="match-card rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Match 6</span>
+                        <span class="text-sm">aug 5, 7:30 PM</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"> <img src="rr.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">RR</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm mb-2">VS</div>
+                            <div class="animate-bounce-slow">🏏</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-2"><img src="csk2.png"  style="width: 50px;" height="50px"></div>
+                            <div class="font-bold">CSK</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>📍 Chepauk</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div id="stats-section" class="tab-content hidden">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Player Statistics</h2>
+                <p class="text-gray-600">Top performers of IPL 2025</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stats-card rounded-xl shadow-lg p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4"> <img src="bat.webp" style="width: 100px; height: 50px;"> Top Batsmen</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>Sai Sudharsan(GT)</span>
+                            <span class="font-bold">759 runs</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Surya Kumar Yadav(MI)</span>
+                            <span class="font-bold">717 runs</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Virat Kohli(RCB)</span>
+                            <span class="font-bold">657 runs</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Shubman Gill(GT)</span>
+                            <span class="font-bold">650 runs</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="stats-card rounded-xl shadow-lg p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4"> <img src="bowler.jpg"  style="width: 100px; height: 50px;"> Top Bowlers</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>Prasidh Krishna(GT)</span>
+                            <span class="font-bold">25 wickets</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Noor Ahmad(CSK)</span>
+                            <span class="font-bold">24 wickets</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Josh Hazlewood(RCB)</span>
+                            <span class="font-bold">22 wickets</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Trent Boult(GT)</span>
+                            <span class="font-bold">22 wickets</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card rounded-xl shadow-lg p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4"><img src="best striker.webp"  style="width: 100px; height: 50px;"> Best Strike Rates</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>R Shepherd (RCB)</span>
+                            <span class="font-bold">291.66</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>UM Patel (CSK)</span>
+                            <span class="font-bold">212.50	</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>V Suryavanshi (RR)</span>
+                            <span class="font-bold">206.55	</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Points Table Section -->
+        <div id="points-section" class="tab-content hidden">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Points Table 2024</h2>
+                <p class="text-gray-600">Current standings in the league</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="gradient-bg text-white">
+                            <tr>
+                                <th class="px-6 py-4 text-left">Position</th>
+                                <th class="px-6 py-4 text-left">Team</th>
+                                <th class="px-6 py-4 text-center">Matches</th>
+                                <th class="px-6 py-4 text-center">Won</th>
+                                <th class="px-6 py-4 text-center">Lost</th>
+                                <th class="px-6 py-4 text-center">Points</th>
+                                <th class="px-6 py-4 text-center">NRR</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                             <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold text-green-600">Q1</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"><img src="punjab.png"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Punjab Kings</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">10</td>
+                                <td class="px-6 py-4 text-center">4</td>
+                                <td class="px-6 py-4 text-center font-bold">20</td>
+                                <td class="px-6 py-4 text-center">+0.234</td>
+                            </tr>
+                            
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold text-green-600">Q2</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"><img src="rcb2.png"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Royal Challengers Bangalore</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">9</td>
+                                <td class="px-6 py-4 text-center">5</td>
+                                <td class="px-6 py-4 text-center font-bold">18</td>
+                                <td class="px-6 py-4 text-center">+0.456</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold text-green-600">Q3</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"> <img src="gt.jpg"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Gujarat Titans</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">8</td>
+                                <td class="px-6 py-4 text-center">6</td>
+                                <td class="px-6 py-4 text-center font-bold">16</td>
+                                <td class="px-6 py-4 text-center">+0.809</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold text-green-600">Q4</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"><img src="mi.jpg"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Mumbai Indians</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">8</td>
+                                <td class="px-6 py-4 text-center">6</td>
+                                <td class="px-6 py-4 text-center font-bold">16</td>
+                                <td class="px-6 py-4 text-center">+0.123</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">5</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"><img src="dc.png"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Delhi Capitals</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">7</td>
+                                <td class="px-6 py-4 text-center">7</td>
+                                <td class="px-6 py-4 text-center font-bold">14</td>
+                                <td class="px-6 py-4 text-center">-0.089</td>
+                            </tr>
+
+                              <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">6</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"> <img src="srh.jpeg"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Sunrisers Hyderabad</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">6</td>
+                                <td class="px-6 py-4 text-center">8</td>
+                                <td class="px-6 py-4 text-center font-bold">12</td>
+                                <td class="px-6 py-4 text-center">+0.809</td>
+                            </tr>
+
+                            
+                              <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold ">7</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"> <img src="kkr.jpg"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Kolkata Knight Riders</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">6</td>
+                                <td class="px-6 py-4 text-center">8</td>
+                                <td class="px-6 py-4 text-center font-bold">12</td>
+                                <td class="px-6 py-4 text-center">+0.809</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">8</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"> <img src="rr.png"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Rajasthan Royals</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">6</td>
+                                <td class="px-6 py-4 text-center">8</td>
+                                <td class="px-6 py-4 text-center font-bold">12</td>
+                                <td class="px-6 py-4 text-center">+0.809</td>
+                            </tr>
+                              <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold ">9</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl"><img src="csk2.png"  style="width: 40px;" height="40px"></span>
+                                        <span class="font-medium">Chennai Super Kings</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">14</td>
+                                <td class="px-6 py-4 text-center">5</td>
+                                <td class="px-6 py-4 text-center">9</td>
+                                <td class="px-6 py-4 text-center font-bold">10</td>
+                                <td class="px-6 py-4 text-center">+0.234</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Team Details Modal -->
+    <div id="team-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            <div id="team-details" class="text-center">
+                <!-- Team details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('[id^="tab-"]');
+            tabs.forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('hover:bg-gray-100');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + '-section').classList.remove('hidden');
+            
+            // Add active class to selected tab
+            const activeTab = document.getElementById('tab-' + tabName);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('hover:bg-gray-100');
+        }
+
+        // Team details functionality
+        const teamData = {
+            'CSK': {
+                name: 'Chennai Super Kings',
+                emoji: '<img src="csk2.png"  style="width: 100px; height=100px">',
+                captain: 'MS Dhoni',
+                coach: 'Stephen Fleming',
+                homeGround: 'M. A. Chidambaram Stadium',
+                titles: '5 IPL Titles (2010, 2011, 2018, 2021)',
+                keyPlayers: ['MS Dhoni', 'Ravindra Jadeja', 'Ruturaj Gaikwad']
+            },
+            'MI': {
+                name: 'Mumbai Indians',
+                emoji: '<img src="mi.jpg"  style="width: 100px; height=100px">',
+                captain: 'Rohit Sharma',
+                coach: 'Mark Boucher',
+                homeGround: 'Wankhede Stadium',
+                titles: '5 IPL Titles (2013, 2015, 2017, 2019, 2020)',
+                keyPlayers: ['Rohit Sharma', 'Jasprit Bumrah', 'Suryakumar Yadav']
+            },
+            'RCB': {
+                name: 'Royal Challengers Bangalore',
+                emoji: '<img src="rcb2.png"  style="width: 100px; height=100px">',
+                captain: 'Virat Kohli',
+                coach: 'Andy Flower',
+                homeGround: 'M. Chinnaswamy Stadium',
+                titles: ' 1 winner (2025),Runners-up (2009, 2011, 2016)',
+                keyPlayers: ['Virat Kohli', 'ab de villiers', 'rajat patidar', 'Mohammed Siraj']
+            },
+            'KKR': {
+                name: 'Kolkata Knight Riders',
+                emoji: '<img src="kkr.jpg"  style="width: 100px; height=100px">',
+                captain: 'Ajinkya Rahane',
+                coach: 'Vacant',
+                homeGround: 'Eden Gardens',
+                titles: '2 IPL Titles (2012, 2014)',
+                keyPlayers: ['Ajinkya Rahane', 'Andre Russell', 'Sunil Narine', 'Rinku Singh']
+            },
+            'DC': {
+                name: 'Delhi Capitals',
+                emoji: '<img src="dc.png"  style="width: 100px; height=100px">',
+                captain: 'Rishabh Pant',
+                coach: 'Ricky Ponting',
+                homeGround: 'Arun Jaitley Stadium',
+                titles: 'Runners-up (2020)',
+                keyPlayers: ['Rishabh Pant', 'Prithvi Shaw', 'Axar Patel', 'Kuldeep Yadav']
+            },             
+            'SRH': {
+                name: 'Sunrisers Hyderabad',
+                emoji: '<img src="srh.jpeg"  style="width: 100px; height=100px">',
+                captain: 'pat cummins',
+                coach: '	Daniel Vettori',
+                homeGround: '	Rajiv Gandhi International Cricket Stadium, Hyderabad',
+                titles: '  1[ winner 2022],Runners-up (2023)',
+                keyPlayers: ['Pat Cummins', 'Abhishek Sharma', 'Heinrich Klaasen', ' Nitish Kumar Reddy' ]
+            },
+            'Punjab Kings': {
+                name: 'Punjab Kings',
+                emoji: '<img src="punjab.png"  style="width: 100px; height=100px">',
+                captain: 'shreyas iyer',
+                coach: 'Ricky Ponting',
+                homeGround: 'Maharaja Yadavindra Singh International Cricket Stadium, New Chandigarh',
+                keyPlayers: ['shreyas iyer', 'Marcus Stoinis', 'Arshdeep Singh']
+            },
+            'RR': {
+                name: 'Rajasthan Royals',
+                emoji: '<img src="rr.png"  style="width: 100px; height=100px">',
+                captain: 'Sanju Samson',
+                coach: 'Kumar Sangakkara',
+                homeGround: 'Sawai Mansingh Stadium',
+                titles: '1 IPL Title (2008)',
+                keyPlayers: ['Sanju Samson', 'Jos Buttler', 'Yuzvendra Chahal', 'Yashasvi Jaiswal']
+            },
+            'GT': {
+                name: 'Gujarat Titans',
+                emoji: '<img src="gt.jpg"  style="width: 100px; height=100px">',
+                captain: 'Shubman Gill',
+                coach: 'Ashish Nehra',
+                homeGround: 'Narendra Modi Stadium',
+                titles: '1 IPL Title (2022)',
+                keyPlayers: [ 'Shubman Gill', 'Rashid Khan', 'Mohammed Shami']
+            }
+            
+        };
+        
+
+        function showTeamDetails(teamCode) {
+            const team = teamData[teamCode];
+            const modal = document.getElementById('team-modal');
+            const details = document.getElementById('team-details');
+            
+            details.innerHTML = `
+                <div class="text-6xl mb-4">${team.emoji}</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">${team.name}</h3>
+                <div class="text-left space-y-3 mt-6">
+                    <p><strong>Captain:</strong> ${team.captain}</p>
+                    <p><strong>Coach:</strong> ${team.coach}</p>
+                    <p><strong>Home Ground:</strong> ${team.homeGround}</p>
+                    <p><strong>Achievements:</strong> ${team.titles}</p>
+                    <div>
+                        <strong>Key Players:</strong>
+                        <ul class="list-disc list-inside mt-2 text-gray-600">
+                            ${team.keyPlayers.map(player => `<li>${player}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('team-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('team-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initialize with teams tab active
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('teams');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973a20a4d22a47ed',t:'MTc1NTk0NzA1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
